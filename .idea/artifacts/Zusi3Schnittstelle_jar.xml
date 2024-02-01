@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Zusi3Schnittstelle:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Zusi3Schnittstelle_jar</output-path>
+    <root id="archive" name="Zusi3Schnittstelle.jar">
+      <element id="module-output" name="Zusi3Schnittstelle" />
+    </root>
+  </artifact>
+</component>
