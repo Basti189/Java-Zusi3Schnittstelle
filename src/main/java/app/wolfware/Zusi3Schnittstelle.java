@@ -57,7 +57,7 @@ public class Zusi3Schnittstelle extends Thread {
 		mClientName = clientName;
 		mIp = ip;
 		try {
-			mPort = Integer.valueOf(port);
+			mPort = Integer.parseInt(port);
 		} catch (NumberFormatException e) {
 			mPort = Value.STANDART_SERVER_PORT;
 		}

@@ -14,7 +14,7 @@ import java.util.List;
 
 class ZusiDataManager extends Fuehrerstandsanzeigen {
 
-private List<Integer> mRequestListFuehrerstandsanzeigen = new ArrayList<Integer>();
+	private List<Integer> mRequestListFuehrerstandsanzeigen = new ArrayList<Integer>();
 
 	private List<Object> mListeners = new ArrayList<Object>();
 	

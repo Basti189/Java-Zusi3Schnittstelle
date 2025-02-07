@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Node {
 
-	private byte[] PACKET_LENGTH = new byte[] {0x00, 0x00, 0x00, 0x00};
-	private byte[] ID;
-	private List<Attribute> listAttribute = new ArrayList<Attribute>();
-	private List<Node> listNodes = new ArrayList<Node>();
-	private byte[] END = new byte[] {(byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF};
+	private final byte[] PACKET_LENGTH = new byte[] {0x00, 0x00, 0x00, 0x00};
+	private final byte[] ID;
+	private final List<Attribute> listAttribute = new ArrayList<Attribute>();
+	private final List<Node> listNodes = new ArrayList<Node>();
+	private final byte[] END = new byte[] {(byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF};
 	
 	public Node(int ID) {
 		this.ID = intToByteArray2Bytes(ID);
@@ -40,18 +40,18 @@ public class Node {
 	}
 	
 	public String toString() {
-		String output = "\nKnoten\nID: ";
+		StringBuilder output = new StringBuilder("\nKnoten\nID: ");
 		for (byte b : ID) {
-			output += "0x" + String.format("%02x", b) + ",";
+			output.append("0x").append(String.format("%02x", b)).append(",");
 		}
 		for (Node nodes : listNodes) {
-			output += nodes.toString();
+			output.append(nodes.toString());
 		}
 		for (Attribute attribute : listAttribute) {
-			output += "\nAttribute\n" + attribute.toString();
+			output.append("\nAttribute\n").append(attribute.toString());
 		}
-		output += "\nKnotenende";
-		return output;
+		output.append("\nKnotenende");
+		return output.toString();
 	}
 	
 	public byte[] getID() {
@@ -65,17 +65,7 @@ public class Node {
 	public List<Node> getNodes() {
 		return listNodes;
 	}
-	/*
-	@Deprecated
-	public Nodes getNodesByIDExact(int ID) {
-		for (Nodes nodes : listNodes) {
-			if (nodes.getIDAsInt() == ID) {
-				return nodes;
-			}
-		}
-		return null;
-	}*/
-	
+
 	public Node getNodeByID(int ID) {
 		for (Node node : listNodes) {
 			if (node.getIDAsInt() == ID) {
@@ -83,18 +73,7 @@ public class Node {
 			}
 		}
 		return null;
-	} 
-	
-	/*
-	public List<Nodes> getNodesByID(int ID) {
-		List<Nodes> list = new ArrayList<Nodes>();
-		for (Nodes nodes : listNodes) {
-			if (nodes.getIDAsInt() == ID) {
-				list.add(nodes);
-			}
-		}
-		return list;
-	}*/
+	}
 	
 	public List<Attribute> getAttribute() {
 		return listAttribute;
@@ -109,13 +88,13 @@ public class Node {
 		return null;
 	}
 	
-	public static final byte[] intToByteArray2Bytes(int value) {
+	public static byte[] intToByteArray2Bytes(int value) {
 		return new byte[] {
 				(byte)value,
 				(byte)(value >>> 8)};     
 	}
 	
-	private final static byte[] attachByteArrays(byte[] target, byte[] source) {
+	private static byte[] attachByteArrays(byte[] target, byte[] source) {
 	    byte[] result = new byte[target.length + source.length]; 
 	    System.arraycopy(target, 0, result, 0, target.length); 
 	    System.arraycopy(source, 0, result, target.length, source.length); 

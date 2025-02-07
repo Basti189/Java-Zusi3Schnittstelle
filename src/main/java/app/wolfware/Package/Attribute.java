@@ -44,17 +44,17 @@ public class Attribute {
 	}
 	
 	public String toString() {
-		String output = "ID: ";
+		StringBuilder output = new StringBuilder("ID: ");
 		for (byte b : ID) {
-			output += "0x" + String.format("%02x", b) + ",";
+			output.append("0x").append(String.format("%02x", b)).append(",");
 		}
-		output = output.substring(0, output.length() - 1);
-		output += "\nDATA: ";
+		output = new StringBuilder(output.substring(0, output.length() - 1));
+		output.append("\nDATA: ");
 		for (byte b : DATA) {
-			output += "0x" + String.format("%02x", b) + ",";
+			output.append("0x").append(String.format("%02x", b)).append(",");
 		}
-		output = output.substring(0, output.length() - 1);
-		return output;
+		output = new StringBuilder(output.substring(0, output.length() - 1));
+		return output.toString();
 	}
 	
 	public byte[] getID() {
@@ -112,10 +112,6 @@ public class Attribute {
 		}
 	}
 	
-	/*public int getDATAAsInt() {
-		return (DATA[0] & 0xFF);
-	}*/
-	
 	private static int byteArrayToInt(byte[] b) {
 	    int value = 0;
 	    for (int i = 0; i < b.length; i++) {
@@ -125,13 +121,13 @@ public class Attribute {
 	    return value;
 	}
 	
-	private final static byte[] intToByteArray2Bytes(int value) {
+	private static byte[] intToByteArray2Bytes(int value) {
 		return new byte[] {
 				(byte)value,
 				(byte)(value >>> 8)};
 	}
 	
-	private final static byte[] intToByteArray(int value) {
+	private static byte[] intToByteArray(int value) {
 	    byte[] ret = new byte[4];
 	    ret[0] = (byte) (value & 0xFF);   
 	    ret[1] = (byte) ((value >> 8) & 0xFF);   
@@ -140,7 +136,7 @@ public class Attribute {
 	    return ret;
 	}
 	
-	private final static byte[] attachByteArrays(byte[] target, byte[] source) {
+	private static byte[] attachByteArrays(byte[] target, byte[] source) {
 	    byte[] result = new byte[target.length + source.length]; 
 	    System.arraycopy(target, 0, result, 0, target.length); 
 	    System.arraycopy(source, 0, result, target.length, source.length); 
