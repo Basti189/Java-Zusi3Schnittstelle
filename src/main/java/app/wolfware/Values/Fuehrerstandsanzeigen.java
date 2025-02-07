@@ -182,12 +182,8 @@ public class Fuehrerstandsanzeigen {
 	public final static char Steuerwagen_Motorspannung_II = 0xB1;
 	public final static char Zwangsbremsung = 0xB2;
 	public final static char Druck_Bremszylinder_II = 0xB3;
-
 	public final static char Status_Signale = 0xB4;
-
 	public final static char Drehwinkel_X_Achse = 0xB5;
-
 	public final static char Drehwinkel_Y_Achse = 0xB6;
-
 	public final static char Drehwinkel_Z_Achse = 0xB7;
 }
